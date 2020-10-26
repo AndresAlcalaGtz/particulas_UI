@@ -1,4 +1,5 @@
 from particula import Particula
+import json
 
 class Laboratorio:
     
@@ -19,3 +20,21 @@ class Laboratorio:
     def mostrar(self):
         for p in self.__particulas:
             print(p)
+
+    def guardar(self, ubicacion):
+        try:
+            with open(ubicacion, 'w') as archivo:
+                lista = [p.to_dict() for p in self.__particulas]
+                json.dump(lista, archivo, indent=5)
+            return 1
+        except:
+            return 0
+
+    def abrir(self, ubicacion):
+        try:
+            with open(ubicacion, "r") as archivo:
+                lista = json.load(archivo)
+                self.__particulas = [Particula(**p) for p in lista]
+            return 1
+        except:
+            return 0

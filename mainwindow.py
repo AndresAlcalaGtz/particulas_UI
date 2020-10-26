@@ -1,4 +1,4 @@
-from PySide2.QtWidgets import QMainWindow
+from PySide2.QtWidgets import QMainWindow, QFileDialog, QMessageBox
 from PySide2.QtCore import Slot
 from ui_mainwindow import Ui_MainWindow
 from laboratorio import Laboratorio
@@ -8,13 +8,38 @@ class MainWindow(QMainWindow):
 
 
     def __init__(self):
+
         super(MainWindow, self).__init__()
+
         self.lab = Laboratorio()
+
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
         self.ui.agregarinicio_pushButton.clicked.connect(self.push_front)
         self.ui.agregarfinal_pushButton.clicked.connect(self.push_back)
         self.ui.mostrar_pushButton.clicked.connect(self.show_all)
+        
+        self.ui.actionAbrir.triggered.connect(self.action_openfile)
+        self.ui.actionGuardar.triggered.connect(self.action_savefile)
+
+
+    @Slot()
+    def action_openfile(self):
+        ubicacion = QFileDialog.getOpenFileName(self, "Abrir archivo", ".", "JSON (*.json)")[0]
+        if self.lab.abrir(ubicacion):
+            QMessageBox.information(self, "Exito", "Se ha abierto el archivo. " + ubicacion)
+        else:
+            QMessageBox.critical(self, "Error", "No se ha abierto el archivo. " + ubicacion)
+
+
+    @Slot()
+    def action_savefile(self):
+        ubicacion = QFileDialog.getSaveFileName(self, "Guardar archivo", ".", "JSON (*.json)")[0]
+        if self.lab.guardar(ubicacion):
+            QMessageBox.information(self, "Exito", "Se pudo crear el archivo. " + ubicacion)
+        else:
+            QMessageBox.critical(self, "Error", "No se pudo crear el archivo. " + ubicacion)
 
 
     @Slot()

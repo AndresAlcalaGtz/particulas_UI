@@ -25,3 +25,16 @@ class Particula:
             "RGB: (" + str(self.__red) + ", " + str(self.__green) + ", " + str(self.__blue) + ")\n" +
             "Distancia: " + str(self.__distancia) + "\n"
         )
+
+    def to_dict(self):
+        return {
+            "ID": self.__id,
+            "OrigenX": self.__origenX,
+            "OrigenY": self.__origenY,
+            "DestinoX": self.__destinoX,
+            "DestinoY": self.__destinoY,
+            "Velocidad": self.__velocidad,
+            "Red": self.__red,
+            "Green": self.__green,
+            "Blue": self.__blue
+        }
