@@ -11,6 +11,21 @@ class Laboratorio:
             str(p) + '\n' for p in self.__particulas
         )
 
+    def __len__(self):
+        return len(self.__particulas)
+
+    def __iter__(self):
+        self.cont = 0
+        return self
+
+    def __next__(self):
+        if self.cont < len(self.__particulas):
+            p = self.__particulas[self.cont]
+            self.cont += 1
+            return p
+        else:
+            raise StopIteration
+
     def agregar_final(self, p: Particula):
         self.__particulas.append(p)
 

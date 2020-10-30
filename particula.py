@@ -17,14 +17,52 @@ class Particula:
     def __str__(self) -> str:
         return (
             "ID: " + str(self.__id) + "\n" +
-            "Origen x: " + str(self.__origenX) + "\n" +
-            "Origen y: " + str(self.__origenY) + "\n" +
-            "Destino x: " + str(self.__destinoX) + "\n" +
-            "Destino y: " + str(self.__destinoY) + "\n" +
+            "Origen (x,y): (" + str(self.__origenX) + ", " + str(self.__origenY) + ")\n" +
+            "Destino (x,y): (" + str(self.__destinoX) + ", " + str(self.__destinoY) + ")\n" +
             "Velocidad: " + str(self.__velocidad) + "\n" +
             "RGB: (" + str(self.__red) + ", " + str(self.__green) + ", " + str(self.__blue) + ")\n" +
             "Distancia: " + str(self.__distancia) + "\n"
         )
+
+    @property
+    def getID(self):
+        return self.__id
+
+    @property
+    def getOrigenX(self):
+        return self.__origenX
+
+    @property
+    def getOrigenY(self):
+        return self.__origenY
+
+    @property
+    def getDestinoX(self):
+        return self.__destinoX
+
+    @property
+    def getDestinoY(self):
+        return self.__destinoY
+
+    @property
+    def getVelocidad(self):
+        return self.__velocidad
+
+    @property
+    def getRed(self):
+        return self.__red
+
+    @property
+    def getGreen(self):
+        return self.__green
+
+    @property
+    def getBlue(self):
+        return self.__blue
+
+    @property
+    def getDistancia(self):
+        return self.__distancia
 
     def to_dict(self):
         return {
