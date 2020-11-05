@@ -111,7 +111,7 @@ class Ui_MainWindow(object):
 
         self.red_spinBox = QSpinBox(self.agregar_groupBox)
         self.red_spinBox.setObjectName(u"red_spinBox")
-        self.red_spinBox.setMaximum(500)
+        self.red_spinBox.setMaximum(255)
 
         self.gridLayout.addWidget(self.red_spinBox, 6, 1, 1, 1)
 
@@ -122,7 +122,7 @@ class Ui_MainWindow(object):
 
         self.green_spinBox = QSpinBox(self.agregar_groupBox)
         self.green_spinBox.setObjectName(u"green_spinBox")
-        self.green_spinBox.setMaximum(500)
+        self.green_spinBox.setMaximum(255)
 
         self.gridLayout.addWidget(self.green_spinBox, 7, 1, 1, 1)
 
@@ -133,7 +133,7 @@ class Ui_MainWindow(object):
 
         self.blue_spinBox = QSpinBox(self.agregar_groupBox)
         self.blue_spinBox.setObjectName(u"blue_spinBox")
-        self.blue_spinBox.setMaximum(500)
+        self.blue_spinBox.setMaximum(255)
 
         self.gridLayout.addWidget(self.blue_spinBox, 8, 1, 1, 1)
 
@@ -186,6 +186,26 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.mostrartabla_pushButton, 1, 2, 1, 1)
 
         self.pestanas_tabWidget.addTab(self.tabla_tab, "")
+        self.dibujar_tab = QWidget()
+        self.dibujar_tab.setObjectName(u"dibujar_tab")
+        self.gridLayout_5 = QGridLayout(self.dibujar_tab)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.dibujo_graphicsView = QGraphicsView(self.dibujar_tab)
+        self.dibujo_graphicsView.setObjectName(u"dibujo_graphicsView")
+
+        self.gridLayout_5.addWidget(self.dibujo_graphicsView, 0, 0, 1, 2)
+
+        self.dibujar_pushButton = QPushButton(self.dibujar_tab)
+        self.dibujar_pushButton.setObjectName(u"dibujar_pushButton")
+
+        self.gridLayout_5.addWidget(self.dibujar_pushButton, 1, 0, 1, 1)
+
+        self.limpiar_pushButton = QPushButton(self.dibujar_tab)
+        self.limpiar_pushButton.setObjectName(u"limpiar_pushButton")
+
+        self.gridLayout_5.addWidget(self.limpiar_pushButton, 1, 1, 1, 1)
+
+        self.pestanas_tabWidget.addTab(self.dibujar_tab, "")
 
         self.gridLayout_3.addWidget(self.pestanas_tabWidget, 0, 0, 1, 1)
 
@@ -240,6 +260,9 @@ class Ui_MainWindow(object):
         self.buscar_pushButton.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
         self.mostrartabla_pushButton.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.pestanas_tabWidget.setTabText(self.pestanas_tabWidget.indexOf(self.tabla_tab), QCoreApplication.translate("MainWindow", u"Tabla", None))
+        self.dibujar_pushButton.setText(QCoreApplication.translate("MainWindow", u"Dibujar", None))
+        self.limpiar_pushButton.setText(QCoreApplication.translate("MainWindow", u"Limpiar", None))
+        self.pestanas_tabWidget.setTabText(self.pestanas_tabWidget.indexOf(self.dibujar_tab), QCoreApplication.translate("MainWindow", u"Dibujar", None))
         self.menuArchivo.setTitle(QCoreApplication.translate("MainWindow", u"Archivo", None))
     # retranslateUi
 
