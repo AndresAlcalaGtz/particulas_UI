@@ -18,7 +18,10 @@ class MainWindow(QMainWindow):
         self.ui.actionGuardar.triggered.connect(self.action_savefile)
         self.ui.agregarinicio_pushButton.clicked.connect(self.push_front)
         self.ui.agregarfinal_pushButton.clicked.connect(self.push_back)
-        self.ui.mostrar_pushButton.clicked.connect(self.show_all)
+        self.ui.ordenarid_pushButton.clicked.connect(self.sort_id)
+        self.ui.ordenardistancia_pushButton.clicked.connect(self.sort_distance)
+        self.ui.ordenarvelocidad_pushButton.clicked.connect(self.sort_speed)
+        self.ui.mostrartexto_pushButton.clicked.connect(self.show_all)
         self.ui.mostrartabla_pushButton.clicked.connect(self.show_table)
         self.ui.buscar_pushButton.clicked.connect(self.search_id) 
         self.ui.dibujar_pushButton.clicked.connect(self.draw)
@@ -67,6 +70,18 @@ class MainWindow(QMainWindow):
         blue = self.ui.blue_spinBox.value()
         p = Particula(ID, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue)
         self.lab.agregar_final(p)
+
+    @Slot()
+    def sort_id(self):
+        self.lab.ordenar_id()
+
+    @Slot()
+    def sort_distance(self):
+        self.lab.ordenar_distancia()
+
+    @Slot()
+    def sort_speed(self):
+        self.lab.ordenar_velocidad()
 
     @Slot()
     def show_all(self):

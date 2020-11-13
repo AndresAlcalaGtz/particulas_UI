@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(468, 452)
+        MainWindow.resize(609, 563)
         self.actionAbrir = QAction(MainWindow)
         self.actionAbrir.setObjectName(u"actionAbrir")
         self.actionGuardar = QAction(MainWindow)
@@ -147,10 +147,25 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.agregarfinal_pushButton, 10, 0, 1, 2)
 
-        self.mostrar_pushButton = QPushButton(self.agregar_groupBox)
-        self.mostrar_pushButton.setObjectName(u"mostrar_pushButton")
+        self.ordenarid_pushButton = QPushButton(self.agregar_groupBox)
+        self.ordenarid_pushButton.setObjectName(u"ordenarid_pushButton")
 
-        self.gridLayout.addWidget(self.mostrar_pushButton, 11, 0, 1, 2)
+        self.gridLayout.addWidget(self.ordenarid_pushButton, 11, 0, 1, 2)
+
+        self.ordenardistancia_pushButton = QPushButton(self.agregar_groupBox)
+        self.ordenardistancia_pushButton.setObjectName(u"ordenardistancia_pushButton")
+
+        self.gridLayout.addWidget(self.ordenardistancia_pushButton, 12, 0, 1, 2)
+
+        self.ordenarvelocidad_pushButton = QPushButton(self.agregar_groupBox)
+        self.ordenarvelocidad_pushButton.setObjectName(u"ordenarvelocidad_pushButton")
+
+        self.gridLayout.addWidget(self.ordenarvelocidad_pushButton, 13, 0, 1, 2)
+
+        self.mostrartexto_pushButton = QPushButton(self.agregar_groupBox)
+        self.mostrartexto_pushButton.setObjectName(u"mostrartexto_pushButton")
+
+        self.gridLayout.addWidget(self.mostrartexto_pushButton, 14, 0, 1, 2)
 
 
         self.gridLayout_2.addWidget(self.agregar_groupBox, 0, 0, 1, 1)
@@ -212,7 +227,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 468, 21))
+        self.menubar.setGeometry(QRect(0, 0, 609, 21))
         self.menuArchivo = QMenu(self.menubar)
         self.menuArchivo.setObjectName(u"menuArchivo")
         MainWindow.setMenuBar(self.menubar)
@@ -254,7 +269,10 @@ class Ui_MainWindow(object):
         self.blue_label.setText(QCoreApplication.translate("MainWindow", u"Color (Blue):", None))
         self.agregarinicio_pushButton.setText(QCoreApplication.translate("MainWindow", u"Agregar part\u00edcula al inicio", None))
         self.agregarfinal_pushButton.setText(QCoreApplication.translate("MainWindow", u"Agregar part\u00edcula al final", None))
-        self.mostrar_pushButton.setText(QCoreApplication.translate("MainWindow", u"Mostrar part\u00edculas", None))
+        self.ordenarid_pushButton.setText(QCoreApplication.translate("MainWindow", u"Ordenar part\u00edculas (ID - ascendente)", None))
+        self.ordenardistancia_pushButton.setText(QCoreApplication.translate("MainWindow", u"Ordenar part\u00edculas (Distancia - descendente)", None))
+        self.ordenarvelocidad_pushButton.setText(QCoreApplication.translate("MainWindow", u"Ordenar part\u00edculas (Velocidad - ascendente)", None))
+        self.mostrartexto_pushButton.setText(QCoreApplication.translate("MainWindow", u"Mostrar part\u00edculas", None))
         self.pestanas_tabWidget.setTabText(self.pestanas_tabWidget.indexOf(self.agregar_tab), QCoreApplication.translate("MainWindow", u"Agregar", None))
         self.buscartexto_lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"ID de la part\u00edcula", None))
         self.buscar_pushButton.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))

@@ -26,11 +26,20 @@ class Laboratorio:
         else:
             raise StopIteration
 
+    def agregar_inicio(self, p: Particula):
+        self.__particulas.insert(0, p)
+
     def agregar_final(self, p: Particula):
         self.__particulas.append(p)
 
-    def agregar_inicio(self, p: Particula):
-        self.__particulas.insert(0, p)
+    def ordenar_id(self):
+        self.__particulas.sort(key=lambda p: p.getID)
+
+    def ordenar_distancia(self):
+        self.__particulas.sort(key=lambda p: p.getDistancia, reverse=True)
+
+    def ordenar_velocidad(self):
+        self.__particulas.sort(key=lambda p: p.getVelocidad)
 
     def mostrar(self):
         for p in self.__particulas:
