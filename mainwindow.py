@@ -22,6 +22,7 @@ class MainWindow(QMainWindow):
         self.ui.ordenardistancia_pushButton.clicked.connect(self.sort_distance)
         self.ui.ordenarvelocidad_pushButton.clicked.connect(self.sort_speed)
         self.ui.mostrartexto_pushButton.clicked.connect(self.show_all)
+        self.ui.mostrargrafo_pushButton.clicked.connect(self.set_graph)
         self.ui.mostrartabla_pushButton.clicked.connect(self.show_table)
         self.ui.buscar_pushButton.clicked.connect(self.search_id) 
         self.ui.dibujar_pushButton.clicked.connect(self.draw)
@@ -88,6 +89,11 @@ class MainWindow(QMainWindow):
         self.ui.mostrartexto_plainTextEdit.clear()
         self.ui.mostrartexto_plainTextEdit.insertPlainText(str(self.lab))
 
+    @Slot()
+    def set_graph(self):
+        self.ui.mostrartexto_plainTextEdit.clear()
+        self.ui.mostrartexto_plainTextEdit.insertPlainText(self.lab.establecer_grafo())
+
     def show_row(self, row: int, particle: Particula):
         id_widget = QTableWidgetItem(str(particle.getID))
         origenx_widget = QTableWidgetItem(str(particle.getOrigenX))
@@ -98,7 +104,7 @@ class MainWindow(QMainWindow):
         red_widget = QTableWidgetItem(str(particle.getRed))
         green_widget = QTableWidgetItem(str(particle.getGreen))
         blue_widget = QTableWidgetItem(str(particle.getBlue))
-        distancia_widget = QTableWidgetItem(str(particle.getDistancia))
+        distancia_widget = QTableWidgetItem(str(int(particle.getDistancia)))
         self.ui.tabla_tableWidget.setItem(row, 0, id_widget)
         self.ui.tabla_tableWidget.setItem(row, 1, origenx_widget)
         self.ui.tabla_tableWidget.setItem(row, 2, origeny_widget)

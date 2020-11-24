@@ -1,10 +1,12 @@
 from particula import Particula
+import pprint
 import json
 
 class Laboratorio:
     
     def __init__(self):
         self.__particulas = []
+        self.__grafo = dict()
 
     def __str__(self):
         return "".join(
@@ -62,3 +64,22 @@ class Laboratorio:
             return 1
         except:
             return 0
+
+    def establecer_grafo(self):
+        for p in self.__particulas:
+            origen = (p.getOrigenX, p.getOrigenY)
+            destino = (p.getDestinoX, p.getDestinoY)
+            peso = int(p.getDistancia)
+            arista_o_d = (destino, peso)
+            arista_d_o = (origen, peso)
+            if origen in self.__grafo:
+                self.__grafo[origen].append(arista_o_d)
+            else:
+                self.__grafo[origen] = [arista_o_d]
+            if destino in self.__grafo:
+                self.__grafo[destino].append(arista_d_o)
+            else:
+                self.__grafo[destino] = [arista_d_o]
+        lista = pprint.pformat(self.__grafo, width=100, indent=1)
+        print(lista)
+        return lista

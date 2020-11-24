@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>609</width>
-    <height>563</height>
+    <height>568</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Laboratorio de particulas</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
@@ -34,24 +34,17 @@
            <string>Partícula</string>
           </property>
           <layout class="QGridLayout" name="gridLayout">
+           <item row="4" column="0">
+            <widget class="QLabel" name="destinoy_label">
+             <property name="text">
+              <string>Destino (y):</string>
+             </property>
+            </widget>
+           </item>
            <item row="0" column="0">
             <widget class="QLabel" name="id_label">
              <property name="text">
               <string>ID:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QSpinBox" name="id_spinBox">
-             <property name="maximum">
-              <number>999999999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="origenx_label">
-             <property name="text">
-              <string>Origen (x):</string>
              </property>
             </widget>
            </item>
@@ -65,80 +58,17 @@
              </property>
             </widget>
            </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="origenx_label">
+             <property name="text">
+              <string>Origen (x):</string>
+             </property>
+            </widget>
+           </item>
            <item row="2" column="0">
             <widget class="QLabel" name="origeny_label">
              <property name="text">
               <string>Origen (y):</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QSpinBox" name="origeny_spinBox">
-             <property name="maximum">
-              <number>500</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="destinox_label">
-             <property name="text">
-              <string>Destino (x):</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QSpinBox" name="destinox_spinBox">
-             <property name="maximum">
-              <number>500</number>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="destinoy_label">
-             <property name="text">
-              <string>Destino (y):</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QSpinBox" name="destinoy_spinBox">
-             <property name="maximum">
-              <number>500</number>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="velocidad_label">
-             <property name="text">
-              <string>Velocidad:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QSpinBox" name="velocidad_spinBox">
-             <property name="maximum">
-              <number>999999999</number>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="red_label">
-             <property name="text">
-              <string>Color (Red):</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QSpinBox" name="red_spinBox">
-             <property name="maximum">
-              <number>255</number>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="green_label">
-             <property name="text">
-              <string>Color (Green):</string>
              </property>
             </widget>
            </item>
@@ -149,10 +79,10 @@
              </property>
             </widget>
            </item>
-           <item row="8" column="0">
-            <widget class="QLabel" name="blue_label">
+           <item row="5" column="0">
+            <widget class="QLabel" name="velocidad_label">
              <property name="text">
-              <string>Color (Blue):</string>
+              <string>Velocidad:</string>
              </property>
             </widget>
            </item>
@@ -163,10 +93,45 @@
              </property>
             </widget>
            </item>
+           <item row="13" column="0" colspan="2">
+            <widget class="QPushButton" name="ordenarvelocidad_pushButton">
+             <property name="text">
+              <string>Ordenar partículas (Velocidad - ascendente)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0" colspan="2">
+            <widget class="QPushButton" name="ordenardistancia_pushButton">
+             <property name="text">
+              <string>Ordenar partículas (Distancia - descendente)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QSpinBox" name="origeny_spinBox">
+             <property name="maximum">
+              <number>500</number>
+             </property>
+            </widget>
+           </item>
            <item row="9" column="0" colspan="2">
             <widget class="QPushButton" name="agregarinicio_pushButton">
              <property name="text">
               <string>Agregar partícula al inicio</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="green_label">
+             <property name="text">
+              <string>Color (Green):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="destinox_label">
+             <property name="text">
+              <string>Destino (x):</string>
              </property>
             </widget>
            </item>
@@ -184,17 +149,38 @@
              </property>
             </widget>
            </item>
-           <item row="12" column="0" colspan="2">
-            <widget class="QPushButton" name="ordenardistancia_pushButton">
+           <item row="8" column="0">
+            <widget class="QLabel" name="blue_label">
              <property name="text">
-              <string>Ordenar partículas (Distancia - descendente)</string>
+              <string>Color (Blue):</string>
              </property>
             </widget>
            </item>
-           <item row="13" column="0" colspan="2">
-            <widget class="QPushButton" name="ordenarvelocidad_pushButton">
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="id_spinBox">
+             <property name="maximum">
+              <number>999999999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QSpinBox" name="destinox_spinBox">
+             <property name="maximum">
+              <number>500</number>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QSpinBox" name="red_spinBox">
+             <property name="maximum">
+              <number>255</number>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="red_label">
              <property name="text">
-              <string>Ordenar partículas (Velocidad - ascendente)</string>
+              <string>Color (Red):</string>
              </property>
             </widget>
            </item>
@@ -202,6 +188,27 @@
             <widget class="QPushButton" name="mostrartexto_pushButton">
              <property name="text">
               <string>Mostrar partículas</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QSpinBox" name="velocidad_spinBox">
+             <property name="maximum">
+              <number>999999999</number>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QSpinBox" name="destinoy_spinBox">
+             <property name="maximum">
+              <number>500</number>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0" colspan="2">
+            <widget class="QPushButton" name="mostrargrafo_pushButton">
+             <property name="text">
+              <string>Mostrar grafo</string>
              </property>
             </widget>
            </item>

@@ -21,7 +21,7 @@ class Particula:
             "Destino (x,y): (" + str(self.__destinoX) + ", " + str(self.__destinoY) + ")\n" +
             "Velocidad: " + str(self.__velocidad) + "\n" +
             "RGB: (" + str(self.__red) + ", " + str(self.__green) + ", " + str(self.__blue) + ")\n" +
-            "Distancia: " + str(self.__distancia) + "\n"
+            "Distancia: " + str(int(self.__distancia)) + "\n"
         )
 
     @property
