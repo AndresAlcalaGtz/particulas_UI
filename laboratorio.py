@@ -1,4 +1,5 @@
 from particula import Particula
+from collections import deque
 import pprint
 import json
 
@@ -66,6 +67,7 @@ class Laboratorio:
             return 0
 
     def establecer_grafo(self):
+        self.__grafo.clear()
         for p in self.__particulas:
             origen = (p.getOrigenX, p.getOrigenY)
             destino = (p.getDestinoX, p.getDestinoY)
@@ -80,6 +82,34 @@ class Laboratorio:
                 self.__grafo[destino].append(arista_d_o)
             else:
                 self.__grafo[destino] = [arista_d_o]
-        lista = pprint.pformat(self.__grafo, width=100, indent=1)
-        print(lista)
-        return lista
+        return pprint.pformat(self.__grafo, width=100, indent=1)
+
+    def busqueda_profundidad(self, origen: tuple):
+        self.visitados = []
+        self.recorrido = []
+        self.pila = deque()
+        self.visitados.append(origen)
+        self.pila.append(origen)
+        while self.pila:
+            vertice = self.pila.pop()
+            self.recorrido.append(vertice)
+            for key, value in self.__grafo[vertice]:
+                if key not in self.visitados:
+                    self.visitados.append(key)
+                    self.pila.append(key)
+        return "".join(str(t) + '\n' for t in self.recorrido)
+
+    def busqueda_amplitud(self, origen: tuple):
+        self.visitados = []
+        self.recorrido = []
+        self.cola = deque()
+        self.visitados.append(origen)
+        self.cola.append(origen)
+        while self.cola:
+            vertice = self.cola.popleft()
+            self.recorrido.append(vertice)
+            for key, value in self.__grafo[vertice]:
+                if key not in self.visitados:
+                    self.visitados.append(key)
+                    self.cola.append(key)
+        return "".join(str(t) + '\n' for t in self.recorrido)

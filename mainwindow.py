@@ -12,8 +12,10 @@ class MainWindow(QMainWindow):
         self.lab = Laboratorio()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.scene = QGraphicsScene()
-        self.ui.dibujo_graphicsView.setScene(self.scene)
+        self.particle_scene = QGraphicsScene()
+        self.graph_scene = QGraphicsScene()
+        self.ui.dibujo_graphicsView.setScene(self.particle_scene)
+        self.ui.grafo_graphicsView.setScene(self.graph_scene)
         self.ui.actionAbrir.triggered.connect(self.action_openfile)
         self.ui.actionGuardar.triggered.connect(self.action_savefile)
         self.ui.agregarinicio_pushButton.clicked.connect(self.push_front)
@@ -22,11 +24,13 @@ class MainWindow(QMainWindow):
         self.ui.ordenardistancia_pushButton.clicked.connect(self.sort_distance)
         self.ui.ordenarvelocidad_pushButton.clicked.connect(self.sort_speed)
         self.ui.mostrartexto_pushButton.clicked.connect(self.show_all)
-        self.ui.mostrargrafo_pushButton.clicked.connect(self.set_graph)
         self.ui.mostrartabla_pushButton.clicked.connect(self.show_table)
         self.ui.buscar_pushButton.clicked.connect(self.search_id) 
         self.ui.dibujar_pushButton.clicked.connect(self.draw)
         self.ui.limpiar_pushButton.clicked.connect(self.clear)
+        self.ui.mostrargrafo_pushButton.clicked.connect(self.set_graph)
+        self.ui.profundidad_pushButton.clicked.connect(self.depth_search)
+        self.ui.amplitud_pushButton.clicked.connect(self.breadth_search)
 
     @Slot()
     def action_openfile(self):
@@ -88,11 +92,6 @@ class MainWindow(QMainWindow):
     def show_all(self):
         self.ui.mostrartexto_plainTextEdit.clear()
         self.ui.mostrartexto_plainTextEdit.insertPlainText(str(self.lab))
-
-    @Slot()
-    def set_graph(self):
-        self.ui.mostrartexto_plainTextEdit.clear()
-        self.ui.mostrartexto_plainTextEdit.insertPlainText(self.lab.establecer_grafo())
 
     def show_row(self, row: int, particle: Particula):
         id_widget = QTableWidgetItem(str(particle.getID))
@@ -158,10 +157,41 @@ class MainWindow(QMainWindow):
         for p in self.lab:
             color = QColor(p.getRed, p.getGreen, p.getBlue)
             pen.setColor(color)
-            self.scene.addEllipse(p.getOrigenX, p.getOrigenY, 3, 3, pen)
-            self.scene.addEllipse(p.getDestinoX, p.getDestinoY, 3, 3, pen)
-            self.scene.addLine(p.getOrigenX+3, p.getOrigenY+1, p.getDestinoX, p.getDestinoY+1, pen)
+            self.particle_scene.addEllipse(p.getOrigenX, p.getOrigenY, 3, 3, pen)
+            self.particle_scene.addEllipse(p.getDestinoX, p.getDestinoY, 3, 3, pen)
+            self.particle_scene.addLine(p.getOrigenX+3, p.getOrigenY+1, p.getDestinoX, p.getDestinoY+1, pen)
 
     @Slot()
     def clear(self):
-        self.scene.clear()
+        self.particle_scene.clear()
+
+    @Slot()
+    def set_graph(self):
+        self.ui.listas_plainTextEdit.clear()
+        self.ui.listas_plainTextEdit.insertPlainText("Listas de adyacencia:\n\n" + self.lab.establecer_grafo())
+        self.graph_scene.clear()
+        pen = QPen()
+        pen.setWidth(2)
+        for p in self.lab:
+            color = QColor(p.getRed, p.getGreen, p.getBlue)
+            pen.setColor(color)
+            self.graph_scene.addEllipse(p.getOrigenX, p.getOrigenY, 3, 3, pen)
+            self.graph_scene.addEllipse(p.getDestinoX, p.getDestinoY, 3, 3, pen)
+            self.graph_scene.addLine(p.getOrigenX+3, p.getOrigenY+1, p.getDestinoX, p.getDestinoY+1, pen)
+
+    @Slot()
+    def depth_search(self):
+        origen_x = self.ui.x_spinBox.value()
+        origen_y = self.ui.y_spinBox.value()
+        origen = (origen_x, origen_y)
+        self.ui.operaciongrafo_plainTextEdit.clear()
+        self.ui.operaciongrafo_plainTextEdit.insertPlainText("Busqueda en profundidad:\n\n" + self.lab.busqueda_profundidad(origen))
+
+    @Slot()
+    def breadth_search(self):
+        origen_x = self.ui.x_spinBox.value()
+        origen_y = self.ui.y_spinBox.value()
+        origen = (origen_x, origen_y)
+        self.ui.operaciongrafo_plainTextEdit.clear()
+        self.ui.operaciongrafo_plainTextEdit.insertPlainText("Busqueda en amplitud:\n\n" + self.lab.busqueda_amplitud(origen))
+        
